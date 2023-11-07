@@ -1,5 +1,9 @@
 def caesar_shift(char, shift):
-
+    if char.isalpha():
+        shift = shift % 26
+        ascii_offset = ord('A') if char.isupper() else ord('a')
+        return chr((ord(char) - ascii_offset + shift) % 26 + ascii_offset)
+    return char
 
 def caesar_cipher(text, key, operation):
 
