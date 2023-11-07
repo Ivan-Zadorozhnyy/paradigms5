@@ -6,8 +6,8 @@ def caesar_shift(char, shift):
     return char
 
 def caesar_cipher(text, key, operation):
-
-
+    shift = key if operation == 'encrypt' else -key
+    return ''.join(caesar_shift(char, shift) for char in text)
 
 def caesar_encrypt(text, key):
 
