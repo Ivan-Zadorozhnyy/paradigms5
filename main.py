@@ -12,14 +12,23 @@ def caesar_cipher(text, key, operation):
 def caesar_encrypt(text, key):
 
 
-
 def caesar_decrypt(text, key):
 
 
 def read_file(path):
-
+    try:
+        with open(path, 'r') as file:
+            return file.read()
+    except Exception as e:
+        print(f"An error occured while reading the file: {e}")
+        return None
 
 def write_file(path, text):
+    try:
+        with open(path, 'w') as file:
+            file.write(text)
+        except Exception as e:
+            print(f"erro while writing to the file: {e}")
 
 
 def process_file(read_path, write_path, key, operation):
