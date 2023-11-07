@@ -10,10 +10,10 @@ def caesar_cipher(text, key, operation):
     return ''.join(caesar_shift(char, shift) for char in text)
 
 def caesar_encrypt(text, key):
-
+    return caesar_cipher(text, key, 'encrypt')
 
 def caesar_decrypt(text, key):
-
+    return caesar_cipher(text, key, 'decrypt')
 
 def read_file(path):
     try:
@@ -27,13 +27,21 @@ def write_file(path, text):
     try:
         with open(path, 'w') as file:
             file.write(text)
-        except Exception as e:
-            print(f"erro while writing to the file: {e}")
+    except Exception as e:
+        print(f"erro while writing to the file: {e}")
 
 
 def process_file(read_path, write_path, key, operation):
-
+    text = read_file(read_path)
+    if text is None:
+        print("Failed to read from the input file.")
+        return
+    result_text = caesar_encrypt(text, key) if operation == 'encrypt' else caesar_decrypt(text, key)
+    write_file(write_path, result_text)
+    print(f"Text has been successfully {operation}ed to {write_path}.")
 
 def main():
-    if __name__ == "__main__":
-        main()
+
+
+if __name__ == "__main__":
+     main()
