@@ -41,7 +41,19 @@ def process_file(read_path, write_path, key, operation):
     print(f"Text has been successfully {operation}ed to {write_path}.")
 
 def main():
+    while True:
+        command = input("Choose your command\n1 - Encrypt text into the file\n2 - Decrypt text from the file\n")
+        if command not in ['1', '2']:
+            print("Invalid command. Please choose '1' for encrypt or '2' for decrypt.")
+            continue
 
+        key = int(input("Enter the key value: "))
+        read_path = input("Enter the name of the input file: ").strip()
+        write_path = input("Enter the name of the output file: ").strip()
+
+        operation = 'encrypt' if command == '1' else 'decrypt'
+        process_file(read_path, write_path, key, operation)
+        print(f"Text has been successfully {operation}ed.")
 
 if __name__ == "__main__":
      main()
